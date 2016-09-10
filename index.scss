@@ -1,0 +1,51 @@
+// Example function: returns what it's given
+@function foo($x) { @return $x; }
+// We're assigning it to a variable
+$foo: get-function('foo');
+
+/**
+ * First-class functions in Sass 3.5.0
+ *
+ * Sass 3.5.0 introduces first-class functions
+ * with a new function: `get-function($name)`
+ *
+ * Release notes: http://blog.sass-lang.com/posts/809572-sass-35-release-candidate
+ *
+ * Release notes don't show any code using get-function,
+ * so let's see how it actually works…
+ *
+ * ---------------------------------------------
+ *
+ * DEPRECATED (will break in 4.0.0)
+ * @function foo($x) { @return $x; }
+ * call('foo', 'bar'); // -> 'bar'
+ *
+ * ---------------------------------------------
+ *
+ * Examples:
+ *
+ * @function foo($x) { @return $x; }
+ * call(get-function('foo'), 'bar'); // -> 'bar'
+ * #{call(
+   		get-function('foo'),
+   		'It works :)')}
+ * #{call(
+ 		get-function(foo),
+		'(even without quotes)')}
+ *
+ * ---------------------------------------------
+ *
+ * #{call(
+		$foo,
+		'You can also assign a function to a variable')}
+ * $foo: get-function(foo);
+ * call($foo, 'bar'); // -> 'bar'
+ *
+ * ---------------------------------------------
+ *
+ * Unfortunately, $foo('bar')
+ * \\\#{$foo('Does not work.')}
+ * Try it yourself: if you remove the \ above,
+ * it will fail to compile and you'll get this error:
+ * Error: get-function("foo") isn't a valid CSS value.
+ */
