@@ -1,0 +1,24 @@
+@function map($list, $function) {
+  $new-list: ();
+  @each $value in $list {
+    $new-list: append(
+      $new-list,
+      call(get-function($function), $value)
+    );
+  }
+  @return $new-list;
+}
+
+@function increment($x) { @return $x + 1; }
+
+$mapped: map((1, 2, 3), 'increment');
+// -> (2, 3, 4)
+
+$mapped-with-call: call(
+  get-function('map'),
+  (1, 2, 3), 'increment'
+);
+// -> (2, 3, 4)
+
+/* #{$mapped} */
+/* #{$mapped-with-call} */
