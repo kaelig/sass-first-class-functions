@@ -1,6 +1,6 @@
 # First class functions in Sass 3.5.0
 
-Sass 3.5.0 introduces first-class functions
+[Sass 3.5.0 introduces first-class functions](https://medium.com/@kaelig/sass-first-class-functions-6e718e2b5eb0#.qwhfp297u)
 with a new function: `get-function($name)`
 
 Release notes: http://blog.sass-lang.com/posts/809572-sass-35-release-candidate
